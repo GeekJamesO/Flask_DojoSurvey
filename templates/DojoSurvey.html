@@ -9,6 +9,15 @@
 
 <body>
     <div class="FormContainer">
+        <br>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <br>
         <form id="DojoSurvey" action="/result" method="POST">
             <div class="SurveyName">
                 <label for="Name">Your Name: </label>
@@ -61,7 +70,8 @@
                 <label for="Comment">Comment (Optional)</label>
             </div>
             <div class="SurveyComment">
-                <input type="text"  name="Comment" value="">
+                <!-- <input type="text"  name="Comment" value=""> -->
+                <textarea name="Comment" rows="8" cols="80"></textarea>
             </div>
             <input class="SubmitButton" type="submit" value="Submit">
         </form>
